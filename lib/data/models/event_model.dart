@@ -20,6 +20,8 @@ class EventModel extends HiveObject {
 
   @HiveField(5)
   String tag;
+  @HiveField(6)
+  String importance;
 
   EventModel({
     required this.title,
@@ -28,5 +30,6 @@ class EventModel extends HiveObject {
     required this.startTime,
     required this.endTime,
     required this.tag,
+    required this.importance,
   });
 }

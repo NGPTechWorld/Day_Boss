@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 abstract class ColorManager {
   // --- Primary Theme Colors (Golden & Navy) ---
   static const Color primaryColor = Color(0xFF292d58); // ذهبي لامع
+  static const Color primary20Color = Color(0xFFdcb86d); // ذهبي لامع
   static const Color lightPrimaryColor = Color(0xFFf3f2f7); // ذهبي فاتح
   static const Color primaryDark = Color(0xFF1c1e3d); // كحلي غامق للخلفية
 
   // --- Secondary Colors (Silver / Metallic) ---
-  static const Color secColor = Color(0xFFdcb86d); // رمادي معدني
+  static const Color secColor = Color(0xFF1c1e3d); // رمادي معدني
   static const Color secLightColor = Color(0xFFE9ECEF); // فضي فاتح
 
   // --- Card & Background Colors ---
