@@ -1,3 +1,4 @@
+import 'package:dayboss/core/services/notifications/notification_service.dart';
 import 'package:dayboss/data/models/event_model.dart';
 import 'package:dayboss/data/models/tag_model.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class AppBinding extends Bindings {
 
     Hive.registerAdapter(EventModelAdapter());
     Hive.registerAdapter(TagModelAdapter());
-
+    NotificationService.init();
     await Hive.openBox<EventModel>('events');
     await Hive.openBox<TagModel>('tags');
     // await Firebase.initializeApp(

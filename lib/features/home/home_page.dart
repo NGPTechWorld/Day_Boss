@@ -1,3 +1,4 @@
+import 'package:dayboss/core/utils/assets.gen.dart';
 import 'package:dayboss/features/home/add_event_dialog.dart';
 import 'package:dayboss/features/home/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +73,7 @@ class MyTasks extends StatelessWidget {
                   ? time.hour - 12
                   : (time.hour == 0 ? 12 : time.hour);
               final minute = time.minute.toString().padLeft(2, '0');
-              final period = time.hour >= 12 ? 'م' : 'ص';
+              final period = time.hour >= 12 ? ' م' : ' ص';
               return '$hour:$minute$period';
             }
 
@@ -82,22 +83,111 @@ class MyTasks extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: ListTile(
-                title: Text(
-                  e.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  '${formatTime(e.startTime)} - ${formatTime(e.endTime)}\n${e.description}',
-                ),
+              child: IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Container(
+                      width: 8,
+                      decoration: BoxDecoration(
+                        color: c.getProertyColor(e.importance),
+                        borderRadius: const BorderRadius.only(
+                          bottomRight: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
+                      ),
+                    ),
 
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete_outline),
-                  color: ColorManager.redColor,
-                  onPressed: () async {
-                    await e.delete();
-                    c.loadData(); // هي الأفضل من update()
-                  },
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          spacing: 4,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    e.title,
+                                    style: Get.textTheme.bodyLarge,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    PopupMenuButton<String>(
+                                      icon: const Icon(Icons.more_vert),
+                                      onSelected: (value) async {
+                                        if (value == 'edit') {
+                                          Get.bottomSheet(
+                                            AddEventBottomSheet(event: e),
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                          );
+                                        } else if (value == 'delete') {
+                                          // تأكيد الحذف
+                                          Get.defaultDialog(
+                                            title: "تأكيد الحذف",
+                                            middleText:
+                                                "هل أنت متأكد أنك تريد حذف هذا الحدث؟",
+                                            textCancel: "إلغاء",
+                                            textConfirm: "حذف",
+                                            confirmTextColor: Colors.white,
+                                            onConfirm: () async {
+                                              await e.delete();
+                                              c.loadData();
+                                              Get.back();
+                                            },
+                                          );
+                                        }
+                                      },
+                                      itemBuilder: (context) => [
+                                        const PopupMenuItem(
+                                          value: 'edit',
+                                          child: Text('تعديل'),
+                                        ),
+                                        const PopupMenuItem(
+                                          value: 'delete',
+                                          child: Text('حذف'),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            e.description != ""
+                                ? Row(
+                                    children: [
+                                      Text(
+                                        "الملاحظات: ",
+                                        style: Get.textTheme.bodyMedium,
+                                      ),
+                                    ],
+                                  )
+                                : const SizedBox(),
+                            Row(
+                              children: [
+                                Text(
+                                  "الوقت: ",
+                                  style: Get.textTheme.bodyMedium,
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(formatTime(e.startTime)),
+                                      Text(formatTime(e.endTime)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );

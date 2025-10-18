@@ -7,16 +7,31 @@ import 'package:get/get.dart';
 
 class AddEventBottomSheet extends StatelessWidget {
   final HomeController controller = Get.find();
+  final EventModel? event; // ← حدث موجود للتعديل
 
   final titleController = TextEditingController();
   final descController = TextEditingController();
-
   final RxString selectedTag = "".obs;
   final Rx<TimeOfDay?> startTime = Rx<TimeOfDay?>(null);
   final Rx<TimeOfDay?> endTime = Rx<TimeOfDay?>(null);
   final RxString importance = "عادي".obs;
 
-  AddEventBottomSheet({super.key});
+  AddEventBottomSheet({super.key, this.event}) {
+    if (event != null) {
+      titleController.text = event!.title;
+      descController.text = event!.description;
+      startTime.value = TimeOfDay(
+        hour: event!.startTime.hour,
+        minute: event!.startTime.minute,
+      );
+      endTime.value = TimeOfDay(
+        hour: event!.endTime.hour,
+        minute: event!.endTime.minute,
+      );
+      selectedTag.value = event!.tag;
+      importance.value = event!.importance;
+    }
+  }
 
   Future<void> pickTime(BuildContext context, Rx<TimeOfDay?> target) async {
     final picked = await showTimePicker(
@@ -140,7 +155,7 @@ class AddEventBottomSheet extends StatelessWidget {
               controller: descController,
               style: Get.textTheme.bodyMedium,
               decoration: const InputDecoration(
-                labelText: "الوصف",
+                labelText: "الملاحظات",
                 border: OutlineInputBorder(),
               ),
               maxLines: 2,
@@ -281,7 +296,7 @@ class AddEventBottomSheet extends StatelessWidget {
                         return;
                       }
 
-                      final now = DateTime.now();
+                      final now = controller.selectedDay.value;
                       final startDateTime = DateTime(
                         now.year,
                         now.month,
@@ -297,21 +312,36 @@ class AddEventBottomSheet extends StatelessWidget {
                         endTime.value!.minute,
                       );
 
-                      controller.addEvent(
-                        EventModel(
-                          title: titleController.text,
-                          description: descController.text,
-                          date: controller.selectedDay.value,
-                          startTime: startDateTime,
-                          endTime: endDateTime,
-                          tag: selectedTag.value,
-                          importance: importance.value, // ✨ جديد
-                        ),
-                      );
+                      if (event != null) {
+                        // تعديل الحدث
+                        event!
+                          ..title = titleController.text
+                          ..description = descController.text
+                          ..startTime = startDateTime
+                          ..endTime = endDateTime
+                          ..tag = selectedTag.value
+                          ..importance = importance.value
+                          ..save();
+                        controller.events.refresh();
+                      } else {
+                        // إضافة جديد
+                        controller.addEvent(
+                          EventModel(
+                            title: titleController.text,
+                            description: descController.text,
+                            date: controller.selectedDay.value,
+                            startTime: startDateTime,
+                            endTime: endDateTime,
+                            tag: selectedTag.value,
+                            importance: importance.value,
+                          ),
+                        );
+                      }
+
                       Get.back();
                     },
-                    child: const Text(
-                      "إضافة",
+                    child: Text(
+                      event != null ? "تعديل" : "إضافة",
                       style: TextStyle(color: ColorManager.white),
                     ),
                   ),

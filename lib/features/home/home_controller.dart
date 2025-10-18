@@ -65,18 +65,31 @@ class HomeController extends GetxController {
   }
 
   Color getDayColor(DateTime day) {
-    if (day.isAfter(DateTime.now())) {
-      int free = getFreeMinutesForDay(day);
-      double percent = free / (24 * 60);
+    final events = getEventsForDay(day);
       // ignore: deprecated_member_use
-      if (percent > 0.6) return ColorManager.greenColor.withOpacity(0.3);
+    if (events.isEmpty) return ColorManager.greenColor.withOpacity(0.3);
+    bool hasHigh = events.any((e) => e.importance.toLowerCase() == 'عالي');
+    bool hasMedium = events.any((e) => e.importance.toLowerCase() == 'متوسط');
+    if (hasHigh) {
       // ignore: deprecated_member_use
-      if (percent > 0.25) return ColorManager.gradientStart.withOpacity(0.3);
-      // ignore: deprecated_member_use
-      if (percent > 0) return ColorManager.redColor.withOpacity(0.3);
+      return ColorManager.redColor.withOpacity(0.3);
+    } else if (hasMedium) {
+        // ignore: deprecated_member_use
+      return ColorManager.gradientStart.withOpacity(0.3); // أصفر
+    } else {
+        // ignore: deprecated_member_use
+      return ColorManager.greenColor.withOpacity(0.3);
     }
+  }
 
-    return Colors.transparent;
+  Color getProertyColor(String proerty) {
+    if (proerty == "عالي") {
+      return ColorManager.redColor;
+    } else if (proerty == "متوسط") {
+      return ColorManager.yello;
+    } else {
+      return ColorManager.greenColor;
+    }
   }
 
   void selectDay(DateTime selected, DateTime focused) {
