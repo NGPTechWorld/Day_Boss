@@ -1,4 +1,7 @@
+import 'package:dayboss/data/models/event_model.dart';
+import 'package:dayboss/data/models/tag_model.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 import '/core/services/api/api_service.dart';
 import '/core/services/cache/cache_service.dart';
 import '/core/services/cache/get_storage_helper.dart';
@@ -18,6 +21,14 @@ class AppBinding extends Bindings {
   static Future<void> init() async {
     await Get.find<CacheService>().init();
     await AppTranslations.init();
+
+    await Hive.initFlutter();
+
+    Hive.registerAdapter(EventModelAdapter());
+    Hive.registerAdapter(TagModelAdapter());
+
+    await Hive.openBox<EventModel>('events');
+    await Hive.openBox<TagModel>('tags');
     // await Firebase.initializeApp(
     //   options: DefaultFirebaseOptions.currentPlatform,
     // );

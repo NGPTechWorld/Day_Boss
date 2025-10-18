@@ -31,11 +31,11 @@ class EmptyCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Assets.images.box.image(
-                    width: isSmall
-                        ? AppSize.sWidth * 0.2
-                        : AppSize.sWidth * 0.5,
-                  ),
+                  // child: Assets.images.box.image(
+                  //   width: isSmall
+                  //       ? AppSize.sWidth * 0.2
+                  //       : AppSize.sWidth * 0.5,
+                  // ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(

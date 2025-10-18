@@ -1,3 +1,4 @@
+import 'package:dayboss/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/core/utils/assets.gen.dart';
@@ -12,10 +13,9 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.primaryDark,
       body: Stack(
         children: [
-          const BubbleBackground(),
           Center(
             child: AnimatedBuilder(
               animation: controller.animationController,
@@ -26,7 +26,7 @@ class SplashPage extends StatelessWidget {
                     scale: controller.scaleAnimation.value,
                     child: Assets.icons.logo.svg(
                       fit: BoxFit.contain,
-                      width: AppSize.sWidth * 0.30,
+                      width: AppSize.sWidth * 0.5,
                     ),
                   ),
                 );

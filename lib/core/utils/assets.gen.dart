@@ -41,15 +41,15 @@ class $AssetsFontsGen {
 
   /// List of all assets
   List<String> get values => [
-    cairoBlack,
-    cairoBold,
-    cairoExtraBold,
-    cairoExtraLight,
-    cairoLight,
-    cairoMedium,
-    cairoRegular,
-    cairoSemiBold,
-  ];
+        cairoBlack,
+        cairoBold,
+        cairoExtraBold,
+        cairoExtraLight,
+        cairoLight,
+        cairoMedium,
+        cairoRegular,
+        cairoSemiBold
+      ];
 }
 
 class $AssetsIconsGen {
@@ -91,9 +91,6 @@ class $AssetsIconsGen {
   SvgGenImage get arrowBackIcon =>
       const SvgGenImage('assets/icons/arrow_back_icon.svg');
 
-  /// File path: assets/icons/box.svg
-  SvgGenImage get box => const SvgGenImage('assets/icons/box.svg');
-
   /// File path: assets/icons/call_icon.svg
   SvgGenImage get callIcon => const SvgGenImage('assets/icons/call_icon.svg');
 
@@ -130,9 +127,6 @@ class $AssetsIconsGen {
   SvgGenImage get exploration =>
       const SvgGenImage('assets/icons/exploration.svg');
 
-  /// File path: assets/icons/eye_hide.svg
-  SvgGenImage get eyeHide => const SvgGenImage('assets/icons/eye_hide.svg');
-
   /// File path: assets/icons/eye_icon.svg
   SvgGenImage get eyeIcon => const SvgGenImage('assets/icons/eye_icon.svg');
 
@@ -141,13 +135,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/favorite.svg
   SvgGenImage get favorite => const SvgGenImage('assets/icons/favorite.svg');
-
-  /// File path: assets/icons/favorite2.svg
-  SvgGenImage get favorite2 => const SvgGenImage('assets/icons/favorite2.svg');
-
-  /// File path: assets/icons/favorite_fill_icon.svg
-  SvgGenImage get favoriteFillIcon =>
-      const SvgGenImage('assets/icons/favorite_fill_icon.svg');
 
   /// File path: assets/icons/file-pencil.svg
   SvgGenImage get filePencil =>
@@ -177,9 +164,6 @@ class $AssetsIconsGen {
   SvgGenImage get genderIcon =>
       const SvgGenImage('assets/icons/gender_icon.svg');
 
-  /// File path: assets/icons/google.svg
-  SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
-
   /// File path: assets/icons/graphics.svg
   SvgGenImage get graphics => const SvgGenImage('assets/icons/graphics.svg');
 
@@ -189,15 +173,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home_icon.svg
   SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
 
-  /// File path: assets/icons/image.png
-  AssetGenImage get image => const AssetGenImage('assets/icons/image.png');
-
   /// File path: assets/icons/image_add_icon.svg
   SvgGenImage get imageAddIcon =>
       const SvgGenImage('assets/icons/image_add_icon.svg');
-
-  /// File path: assets/icons/image_icon.svg
-  SvgGenImage get imageIcon => const SvgGenImage('assets/icons/image_icon.svg');
 
   /// File path: assets/icons/insta.svg
   SvgGenImage get insta => const SvgGenImage('assets/icons/insta.svg');
@@ -220,26 +198,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
 
-  /// File path: assets/icons/logout.svg
-  SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
-
   /// File path: assets/icons/mail_icon.svg
   SvgGenImage get mailIcon => const SvgGenImage('assets/icons/mail_icon.svg');
 
   /// File path: assets/icons/map_icon.svg
   SvgGenImage get mapIcon => const SvgGenImage('assets/icons/map_icon.svg');
-
-  /// File path: assets/icons/marker_office.svg
-  SvgGenImage get markerOffice =>
-      const SvgGenImage('assets/icons/marker_office.svg');
-
-  /// File path: assets/icons/marker_property.svg
-  SvgGenImage get markerProperty =>
-      const SvgGenImage('assets/icons/marker_property.svg');
-
-  /// File path: assets/icons/marker_tourisem.svg
-  SvgGenImage get markerTourisem =>
-      const SvgGenImage('assets/icons/marker_tourisem.svg');
 
   /// File path: assets/icons/more_icon.svg
   SvgGenImage get moreIcon => const SvgGenImage('assets/icons/more_icon.svg');
@@ -258,9 +221,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/phone.svg
   SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
-
-  /// File path: assets/icons/posts.svg
-  SvgGenImage get posts => const SvgGenImage('assets/icons/posts.svg');
 
   /// File path: assets/icons/property.svg
   SvgGenImage get property => const SvgGenImage('assets/icons/property.svg');
@@ -297,9 +257,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/support_icon.svg
   SvgGenImage get supportIcon =>
       const SvgGenImage('assets/icons/support_icon.svg');
-
-  /// File path: assets/icons/target.svg
-  SvgGenImage get target => const SvgGenImage('assets/icons/target.svg');
 
   /// File path: assets/icons/telegram.svg
   SvgGenImage get telegram => const SvgGenImage('assets/icons/telegram.svg');
@@ -340,153 +297,89 @@ class $AssetsIconsGen {
   SvgGenImage get worksIcon => const SvgGenImage('assets/icons/works_icon.svg');
 
   /// List of all assets
-  List<dynamic> get values => [
-    home,
-    locationPin,
-    managment,
-    socialIcons,
-    users,
-    addSuggestionIcon,
-    adsIcon,
-    advertisimentIcon,
-    arrowPrevSmall,
-    arrowBackIcon,
-    box,
-    callIcon,
-    cameraAddIcon,
-    cancelIcon,
-    cartIcon,
-    chatIcon,
-    contactIcon,
-    dateIcon,
-    deleteIcon,
-    editUserIcon,
-    exploration,
-    eyeHide,
-    eyeIcon,
-    facebook,
-    favorite,
-    favorite2,
-    favoriteFillIcon,
-    filePencil,
-    filePlusAlt,
-    fileZipper,
-    filterSvgrepoCom,
-    filterIcon,
-    folderIcon,
-    genderIcon,
-    google,
-    graphics,
-    helpIcon,
-    homeIcon,
-    image,
-    imageAddIcon,
-    imageIcon,
-    insta,
-    layoutGridIcon,
-    layoutListIcon,
-    linkIcon,
-    locationIcon,
-    logo,
-    logout,
-    mailIcon,
-    mapIcon,
-    markerOffice,
-    markerProperty,
-    markerTourisem,
-    moreIcon,
-    notificationIcon,
-    passwordIcon,
-    pencilIcon,
-    phone,
-    posts,
-    property,
-    reports,
-    resumeManageIcon,
-    searchIcon,
-    settingsIcon,
-    shareIcon,
-    shopIcon,
-    starCircle,
-    summaryIcon,
-    supportIcon,
-    target,
-    telegram,
-    tourisem,
-    uploadIcon,
-    userAccountIcon,
-    userFollow2Icon,
-    userFollowIcon,
-    userGroupIcon,
-    userIcon,
-    viewIcon,
-    whatsapp,
-    worksIcon,
-  ];
+  List<SvgGenImage> get values => [
+        home,
+        locationPin,
+        managment,
+        socialIcons,
+        users,
+        addSuggestionIcon,
+        adsIcon,
+        advertisimentIcon,
+        arrowPrevSmall,
+        arrowBackIcon,
+        callIcon,
+        cameraAddIcon,
+        cancelIcon,
+        cartIcon,
+        chatIcon,
+        contactIcon,
+        dateIcon,
+        deleteIcon,
+        editUserIcon,
+        exploration,
+        eyeIcon,
+        facebook,
+        favorite,
+        filePencil,
+        filePlusAlt,
+        fileZipper,
+        filterSvgrepoCom,
+        filterIcon,
+        folderIcon,
+        genderIcon,
+        graphics,
+        helpIcon,
+        homeIcon,
+        imageAddIcon,
+        insta,
+        layoutGridIcon,
+        layoutListIcon,
+        linkIcon,
+        locationIcon,
+        logo,
+        mailIcon,
+        mapIcon,
+        moreIcon,
+        notificationIcon,
+        passwordIcon,
+        pencilIcon,
+        phone,
+        property,
+        reports,
+        resumeManageIcon,
+        searchIcon,
+        settingsIcon,
+        shareIcon,
+        shopIcon,
+        starCircle,
+        summaryIcon,
+        supportIcon,
+        telegram,
+        tourisem,
+        uploadIcon,
+        userAccountIcon,
+        userFollow2Icon,
+        userFollowIcon,
+        userGroupIcon,
+        userIcon,
+        viewIcon,
+        whatsapp,
+        worksIcon
+      ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/box.png
-  AssetGenImage get box => const AssetGenImage('assets/images/box.png');
-
-  /// File path: assets/images/box_error.png
-  AssetGenImage get boxError =>
-      const AssetGenImage('assets/images/box_error.png');
-
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
-
-  /// File path: assets/images/office_property_card.png
-  AssetGenImage get officePropertyCard =>
-      const AssetGenImage('assets/images/office_property_card.png');
-
-  /// File path: assets/images/office_services_card.png
-  AssetGenImage get officeServicesCard =>
-      const AssetGenImage('assets/images/office_services_card.png');
-
-  /// File path: assets/images/property.png
-  AssetGenImage get property =>
-      const AssetGenImage('assets/images/property.png');
-
-  /// File path: assets/images/property_card.png
-  AssetGenImage get propertyCard =>
-      const AssetGenImage('assets/images/property_card.png');
-
-  /// File path: assets/images/property_image.png
-  AssetGenImage get propertyImage =>
-      const AssetGenImage('assets/images/property_image.png');
-
-  /// File path: assets/images/tourisem.png
-  AssetGenImage get tourisem =>
-      const AssetGenImage('assets/images/tourisem.png');
-
-  /// File path: assets/images/tourisem_card.png
-  AssetGenImage get tourisemCard =>
-      const AssetGenImage('assets/images/tourisem_card.png');
 
   /// File path: assets/images/user.png
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
-  /// File path: assets/images/user2.png
-  AssetGenImage get user2 => const AssetGenImage('assets/images/user2.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [
-    box,
-    boxError,
-    logo,
-    officePropertyCard,
-    officeServicesCard,
-    property,
-    propertyCard,
-    propertyImage,
-    tourisem,
-    tourisemCard,
-    user,
-    user2,
-  ];
+  List<AssetGenImage> get values => [logo, user];
 }
 
 class $AssetsLangGen {
@@ -512,7 +405,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
@@ -572,8 +469,15 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({AssetBundle? bundle, String? package}) {
-    return AssetImage(_assetName, bundle: bundle, package: package);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
   }
 
   String get path => _assetName;
@@ -582,11 +486,17 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = false;
+  const SvgGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = false;
 
-  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = true;
+  const SvgGenImage.vec(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -640,8 +550,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter:
-          colorFilter ??
+      colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
