@@ -1,3 +1,4 @@
+import 'package:dayboss/core/services/notifications/notification_service.dart';
 import 'package:dayboss/core/utils/color_manager.dart';
 import 'package:dayboss/data/models/event_model.dart';
 import 'package:dayboss/data/models/tag_model.dart';
@@ -336,6 +337,7 @@ class AddEventBottomSheet extends StatelessWidget {
                             importance: importance.value,
                           ),
                         );
+                        
                       }
 
                       Get.back();

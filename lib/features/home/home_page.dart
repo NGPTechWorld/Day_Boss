@@ -1,7 +1,10 @@
-import 'package:dayboss/core/utils/assets.gen.dart';
+import 'package:dayboss/core/services/notifications/notification_service.dart';
+import 'package:dayboss/core/utils/widgets/custom_icon_button.dart';
+import 'package:dayboss/core/utils/widgets/default_button.dart';
 import 'package:dayboss/features/home/add_event_dialog.dart';
 import 'package:dayboss/features/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:dayboss/core/utils/color_manager.dart';
@@ -36,12 +39,18 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorManager.primaryColor,
-        onPressed: () {
+        onPressed: () async {
           Get.bottomSheet(
             AddEventBottomSheet(),
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
           );
+          final pending = await FlutterLocalNotificationsPlugin()
+              .pendingNotificationRequests();
+          print("عدد الإشعارات المجدولة: ${pending.length}");
+          for (var n in pending) {
+            print("ID: ${n.id}, Title: ${n.title}, Body: ${n.body} ");
+          }
         },
         child: const Icon(Icons.add, color: ColorManager.cardBack2),
       ),

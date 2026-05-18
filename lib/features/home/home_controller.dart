@@ -1,3 +1,4 @@
+import 'package:dayboss/core/services/notifications/notification_service.dart';
 import 'package:dayboss/core/utils/color_manager.dart';
 import 'package:dayboss/data/models/tag_model.dart';
 import 'package:get/get.dart';
@@ -29,10 +30,18 @@ class HomeController extends GetxController {
 
   Future<void> addEvent(EventModel event) async {
     await eventsBox.add(event);
+
+    NotificationService.scheduleNotification(
+      id: event.key.hashCode,
+      title: "موعد المهمة أقترب!!",
+      body: event.title,
+      scheduledTime: event.startTime,
+    );
     loadData();
   }
 
   Future<void> deleteEvent(EventModel event) async {
+    await NotificationService.cancelNotification(event.key.hashCode);
     await event.delete();
     loadData();
   }
@@ -43,7 +52,7 @@ class HomeController extends GetxController {
   }
 
   List<EventModel> getEventsForDay(DateTime day) {
-    return events
+    final dayEvents = events
         .where(
           (e) =>
               e.date.year == day.year &&
@@ -51,6 +60,10 @@ class HomeController extends GetxController {
               e.date.day == day.day,
         )
         .toList();
+
+    dayEvents.sort((a, b) => a.startTime.compareTo(b.startTime));
+
+    return dayEvents;
   }
 
   int getFreeMinutesForDay(DateTime day) {
@@ -66,7 +79,7 @@ class HomeController extends GetxController {
 
   Color getDayColor(DateTime day) {
     final events = getEventsForDay(day);
-      // ignore: deprecated_member_use
+    // ignore: deprecated_member_use
     if (events.isEmpty) return ColorManager.greenColor.withOpacity(0.3);
     bool hasHigh = events.any((e) => e.importance.toLowerCase() == 'عالي');
     bool hasMedium = events.any((e) => e.importance.toLowerCase() == 'متوسط');
@@ -74,10 +87,10 @@ class HomeController extends GetxController {
       // ignore: deprecated_member_use
       return ColorManager.redColor.withOpacity(0.3);
     } else if (hasMedium) {
-        // ignore: deprecated_member_use
+      // ignore: deprecated_member_use
       return ColorManager.gradientStart.withOpacity(0.3); // أصفر
     } else {
-        // ignore: deprecated_member_use
+      // ignore: deprecated_member_use
       return ColorManager.greenColor.withOpacity(0.3);
     }
   }
